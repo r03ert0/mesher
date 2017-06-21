@@ -1,0 +1,6 @@
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles
+Makefile
+mesh_a_3d_gray_image.app
+mesh_a_3d_gray_image
