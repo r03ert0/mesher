@@ -1,28 +1,25 @@
 `mesher`, a meshing command line for everyone and for no one.
 
-Roberto Toro, May 2017
+Roberto Toro, April 2019
 
-* Install cgal using `brew install --with-imaging cgal` 
+## Installation of CGAL and compilation
 
-* Use `cgal_create_cmake_script` to generate a `CMakeList.txt` file
-* Add `find_package(CGAL COMPONENTS ImageIO)` to the CMakeList.txt file, after `find_package(CGAL QUIET COMPONENTS Core )`
-* Enter `cmake .` to generate the configuration file
-    ( if you do not have cmake: `brew install cmake` )
-* `brew install gmp`
-    ( if gmp is already installed but needs to be relinked: `brew unlink gmp && brew link gmp` )
-    
-* Finally, enter `make` to compile
+* Download CGAL, for example https://codeload.github.com/CGAL/cgal/zip/releases/CGAL-4.13.1
+* Compile and install using `cd $LOCATION/CGAL-4.13.1; cmake .; make install`. The `make install` bit
+  is the only way I have figured thus far to make my code find `ImageIO`.
+* The `CmakeList.txt` file was created using the script `cgal_create_CMakeLists -c ImageIO` (found at `CGAL-4.13.1/Scripts`).
+* Compile using `cmake .; make`.
 
 ## Mesh a binary mask
 
 First, you need to convert the binary mask into a grey scale image. You can use `volume`for this (https://github.com/r03ert0/volume)
 
-./volume mask.nii.gz -threshold 1,1 -mult 10000 -boxFilter 1 2 -o greylevel.inr
+`./volume mask.nii.gz -threshold 1,1 -mult 10000 -boxFilter 1 2 -o greylevel.inr`
 
 Next, use mesher like this:
 
-./mesh_a_3d_gray_image greylevel.inr mesh.off
+`./mesh_a_3d_gray_image greylevel.inr mesh.off`
 
 Finally, you can convert the `.off` mesh file into `.ply` for example by using `meshgeometry`:
 
-./meshgeometry_mac -i mesh.off -o mesh.ply
+`./meshgeometry_mac -i mesh.off -o mesh.ply`
