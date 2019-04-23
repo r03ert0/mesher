@@ -2,6 +2,8 @@
 
 Roberto Toro, April 2019
 
+Mesher is a simple implementation of the surface generation algorithm that comes with CGAL. It's not super fast, and sometimes it hangs forever and you need to manually kill it, but when it works, it produces the most beautiful meshes.
+
 ## Installation of CGAL and compilation
 
 * Download CGAL, for example https://codeload.github.com/CGAL/cgal/zip/releases/CGAL-4.13.1
