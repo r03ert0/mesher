@@ -2,11 +2,11 @@
 # This is the CMake script for compiling a CGAL application.
 
 
-project( v.mesher_ )
+project( m.mesher_ )
 
 cmake_minimum_required(VERSION 2.8.10)
 
-set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} lib)
+set(CMAKE_CXX_STANDARD 14)
 
 find_package(CGAL QUIET COMPONENTS Core )
 find_package(CGAL COMPONENTS ImageIO)
